@@ -1,7 +1,6 @@
 # deepMiner
 
 ```acsii
-
 :::::::-.  .,:::::: .,::::::::::::::::. .        :   ::::::.    :::..,:::::: :::::::..
  ;;,   `';,;;;;'''' ;;;;'''' `;;;```.;;;;;,.    ;;;  ;;;`;;;;,  `;;;;;;;'''' ;;;;``;;;;
  `[[     [[ [[cccc   [[cccc   `]]nnn]]' [[[[, ,[[[[, [[[  [[[[[. '[[ [[cccc   [[[,/[[['
@@ -14,7 +13,6 @@
   By evil7@deePwn
 
 ----------------------------------------------------------------------------------------
-
 ```
 
 ## Usage
@@ -45,17 +43,23 @@ ssl support: <https://certbot.eff.org/>
 
 OS pass: `ubuntu(debian)`
 
+## API
+
+Same like this: <https://coinhive.com/documentation/miner> (JUST javascript API)
+
 ## Update
 
 Just go `/srv/deepMiner` and run `git pull`
 
 DON'T forget backup your `config.json` !!!
 
-## attention
+## Attention
 
 Some VPS's default DNS can't find IP for the pool. Check your DNS setting if it's wrong.
 
 SSL cert request default TRUE. Use `certbot` to quickly set it.
+
+If not a bug just Qus in something setting or in install. Please write down at <https://github.com/deepwn/deepMiner/issues/8>
 
 ## Example
 
@@ -69,6 +73,7 @@ deepMiner.git
 |-- README.md
 |-- banner
 |-- config.json
+|-- LICENSE
 |-- package-lock.json
 |-- package.json
 |-- server.js
@@ -83,6 +88,10 @@ deepMiner.git
     |   |__ cryptonight.wasm
     |__ worker.js
 ```
+
+## License
+
+MIT <https://raw.githubusercontent.com/deepwn/deepMiner/master/LICENSE>
 
 ## Missions
 

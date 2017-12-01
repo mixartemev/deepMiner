@@ -119,13 +119,17 @@ srv.on('connection', (ws) => {
 					}
 				}
 				buf = JSON.stringify(buf);
-				conn.ws.send(buf);
+				conn.ws.send(buf,function(error) {
+					console.warn('[!] Error: Something wrong with websocket buffer. `type: authed`');
+				});
 				buf = {
-					"type": 'job',
+					"type": "job",
 					"params": data.result.job
 				}
 				buf = JSON.stringify(buf);
-				conn.ws.send(buf);
+				conn.ws.send(buf,function(error) {
+					console.warn('[!] Error: Something wrong with websocket buffer. `type: job` (with authed)');
+				});
 			} else if (data.result.status === 'OK') {
 				conn.accepted++;
 				buf = {
@@ -135,7 +139,9 @@ srv.on('connection', (ws) => {
 					}
 				}
 				buf = JSON.stringify(buf);
-				conn.ws.send(buf);
+				conn.ws.send(buf,function(error) {
+					console.warn('[!] Error: Something wrong with websocket buffer. `type: hash_accepted`');
+				});
 			}
 		}
 		if (data.id === conn.pid && data.error) {
@@ -155,7 +161,9 @@ srv.on('connection', (ws) => {
 				}
 			}
 			buf = JSON.stringify(buf);
-			conn.ws.send(buf);
+			conn.ws.send(buf,function(error) {
+				console.warn('[!] Error: Something wrong with websocket buffer. `type: error`');
+			});
 		}
 		if (data.method === 'job') {
 			buf = {
@@ -163,7 +171,9 @@ srv.on('connection', (ws) => {
 				"params": data.params
 			}
 			buf = JSON.stringify(buf);
-			conn.ws.send(buf);
+			conn.ws.send(buf,function(error) {
+				console.warn('[!] Error: Something wrong with websocket buffer. `type: job`');
+			});
 		}
 	}
 	conn.ws.on('message', (data) => {
