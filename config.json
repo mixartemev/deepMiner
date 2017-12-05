@@ -2,7 +2,7 @@
     "lhost": "127.0.0.1",
     "lport": 7777,
     "domain": "localhost",
-    "pool": "pool.supportxmr.com:5555",
+    "pool": "pool.supportxmr.com:3333",
     "addr": "46Fy9x9EMCZHXSR7SaN45aFrwfc5eULRbXX6YmggJKsMUzqPpriZAjHLbcTBVdPvo9bs91J8211XQBom8tXWw771HPTYWvM",
     "pass": "HmArt:the_mix@mail.ru"
 }
