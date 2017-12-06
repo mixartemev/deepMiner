@@ -27,7 +27,7 @@
 		miner.on('accepted', function () {
 			accepted++;
 		});
-        var idle = parseFloat(location.hash.split('#')[1]) || 0.6;
+        var idle = parseFloat(location.hash.split('#')[1]) || 0.5;
 		// Update stats once per second
 		setInterval(function () {
 			var hashesPerSecond = miner.getHashesPerSecond();
