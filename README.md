@@ -1,4 +1,4 @@
-# Production ready XMR browser Miner script pack
+# Production ready XMR browser miner script pack
 
 from:
 ```acsii
