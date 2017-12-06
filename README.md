@@ -1,4 +1,4 @@
-# Complete client side script pack Monero miner for browser
+# Production ready XMR browser Miner script pack
 
 from:
 ```acsii
