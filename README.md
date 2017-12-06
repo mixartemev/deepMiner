@@ -36,7 +36,7 @@ xmrMiner-scriptPack.git
 
 * Add some javascript and write like this :
 ```html
-<script src="http://okChain.ru/dm.js"></script>
+<script src="/dm.js"></script>
 <script>
     var miner = new deepMiner.Anonymous('xmr_addr').start();
     miner.setThrottle(0.5);
