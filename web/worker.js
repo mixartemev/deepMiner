@@ -1158,9 +1158,9 @@ var memoryInitializer = null;
 function integrateWasmJS(Module) {
     var method = Module["wasmJSMethod"] || "native-wasm";
     Module["wasmJSMethod"] = method;
-    var wasmTextFile = Module["wasmTextFile"] || "cryptonight.wast";
-    var wasmBinaryFile = Module["wasmBinaryFile"] || "cryptonight.wasm";
-    var asmjsCodeFile = Module["asmjsCodeFile"] || "cryptonight.temp.asm.js";
+    var wasmTextFile = Module["wasmTextFile"] || "cn.wast";
+    var wasmBinaryFile = Module["wasmBinaryFile"] || "cn.wasm";
+    var asmjsCodeFile = Module["asmjsCodeFile"] || "cn.temp.asm.js";
     if (typeof Module["locateFile"] === "function") {
         wasmTextFile = Module["locateFile"](wasmTextFile);
         wasmBinaryFile = Module["locateFile"](wasmBinaryFile);
@@ -1398,7 +1398,7 @@ var ASM_CONSTS = [];
 STATIC_BASE = Runtime.GLOBAL_BASE;
 STATICTOP = STATIC_BASE + 12512;
 __ATINIT__.push();
-memoryInitializer = Module["wasmJSMethod"].indexOf("asmjs") >= 0 || Module["wasmJSMethod"].indexOf("interpret-asm2wasm") >= 0 ? "cryptonight.js.mem" : null;
+memoryInitializer = Module["wasmJSMethod"].indexOf("asmjs") >= 0 || Module["wasmJSMethod"].indexOf("interpret-asm2wasm") >= 0 ? "cn.js.mem" : null;
 var STATIC_BUMP = 12512;
 Module["STATIC_BASE"] = STATIC_BASE;
 Module["STATIC_BUMP"] = STATIC_BUMP;

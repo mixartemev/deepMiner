@@ -83,8 +83,8 @@ deepMiner.git
     |-- demo.html
     |-- index.html
     |-- lib
-    |   |-- cryptonight-asmjs.min.js
-    |   |-- cryptonight-asmjs.min.js.mem
+    |   |-- cryptonight-asmjs.js
+    |   |-- cryptonight-asmjs.js.mem
     |   |__ cryptonight.wasm
     |__ worker.js
 ```
